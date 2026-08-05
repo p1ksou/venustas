@@ -1,2 +1,2 @@
-# jellypsy
-A Jellyfin theme !
+# venustas
+A theme wich make Jellyfin look cleaner and better !
