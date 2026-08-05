@@ -1,0 +1,390 @@
+@import url("https://cdn.jsdelivr.net/gh/intro-skipper/intro-skipper-css@main/skip-button.min.css");
+
+/* ============================================================================
+   JELLYFIN — THÈME "GLASS LÉGER"
+   Coins arrondis · Hover discret · Header transparent · Glassmorphism
+   Version optimisée : variables factorisées, sélecteurs regroupés,
+   doublons supprimés, ordre logique conservé, AUCUN comportement changé.
+   ============================================================================ */
+
+:root{
+    /* --- Rayons génériques (cartes, boutons, inputs) --- */
+    --jf-radius:12px;
+    --jf-radius-sm:10px;
+    --jf-ease:250ms cubic-bezier(.4,0,.2,1);
+
+    /* --- Rayon commun aux panneaux "verre" (drawer, OSD, menus, dialogs) --- */
+    --jf-radius-glass:18px;
+
+    /* --- Palette glassmorphism réutilisée partout (drawer/menus/OSD/skip) --- */
+    --jf-glass-bg:rgba(18,18,22,.65);
+    --jf-glass-border:1px solid rgba(255,255,255,.08);
+    --jf-glass-blur:blur(20px) saturate(160%);
+    --jf-glass-blur-strong:blur(20px) saturate(180%); /* OSD utilise une saturation plus forte */
+    --jf-glass-shadow:
+        0 8px 32px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    /* --- Variables du plugin Intro Skipper --- */
+    --skip-hide-duration:8s;
+    --skip-btn-bg:var(--jf-glass-bg);
+    --skip-btn-bg-hover:rgba(255,255,255,.12);
+    --skip-btn-border-color:rgba(255,255,255,.08);
+    --skip-btn-text-color:rgba(255,255,255,.95);
+    --skip-btn-text-color-hover:#ffffff;
+    --skip-btn-shadow:var(--jf-glass-shadow);
+}
+
+/* ============================================================================
+   HEADER — transparent avec flou au dégradé
+   ============================================================================ */
+.skinHeader{
+    background:linear-gradient(to bottom,rgba(10,11,15,.85),rgba(10,11,15,.35) 70%,transparent)!important;
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+}
+
+.headerTop{
+    background:transparent!important;
+}
+
+/* ============================================================================
+   COINS ARRONDIS — cartes, boutons, champs, dialogs
+   ============================================================================ */
+.card,
+.cardBox,
+.cardScalable,
+.cardImageContainer,
+.cardImage,
+.cardOverlayContainer,
+.cardImageContainer::before,
+.cardImageContainer::after,
+button.raised,
+.emby-button.raised,
+.paper-icon-button-light,
+.emby-input,
+.emby-select,
+.emby-textarea,
+.searchInput,
+.dialog{
+    border-radius:var(--jf-radius)!important;
+}
+
+/* Masque les débordements d'image dans les cartes (zoom au hover, etc.) */
+.card,
+.cardBox,
+.cardScalable,
+.cardImageContainer,
+.cardImage,
+.cardOverlayContainer{
+    overflow:hidden!important;
+}
+
+/* ============================================================================
+   HOVER DISCRET — cartes & boutons
+   ============================================================================ */
+.card,
+button.raised,
+.emby-button.raised{
+    transition:transform var(--jf-ease);
+}
+
+.card:hover{
+    transform:scale(1.25);
+    z-index:3;
+}
+
+button.raised:hover,
+.emby-button.raised:hover{
+    transform:translateY(-1px);
+}
+
+button.raised:active,
+.emby-button.raised:active{
+    transform:translateY(0);
+}
+
+/* Désactive le zoom des cartes sur mobile (pas de vrai hover tactile) */
+@media (max-width:600px){
+    .card:hover{
+        transform:none;
+    }
+}
+
+/* Respecte la préférence "réduire les animations" du système */
+@media (prefers-reduced-motion:reduce){
+    *{
+        transition-duration:1ms!important;
+    }
+}
+
+/* ============================================================================
+   BARRE DE PROGRESSION — repositionnée et arrondie
+   ============================================================================ */
+.innerCardFooter{
+    padding:0 6px 6px 6px!important;
+}
+
+.itemProgressBar{
+    height:8px!important;
+    margin:0!important;
+    border-radius:10px!important;
+    overflow:hidden!important;
+}
+
+.itemProgressBarForeground{
+    border-radius:10px!important;
+}
+
+/* ============================================================================
+   PANNEAUX "VERRE" (GLASSMORPHISM)
+   Regroupe : menu latéral (drawer), barre de lecture (OSD),
+   menus contextuels / dialogs / formulaires, bouton Skip Intro.
+   Tous partagent le même fond flouté, bordure et ombre — factorisés
+   via les variables --jf-glass-* définies dans :root.
+   ============================================================================ */
+
+/* --- Menu latéral (drawer) --- */
+.mainDrawer{
+    margin:12px 12px 12px 0!important; /* état fermé */
+    border-radius:var(--jf-radius-glass)!important;
+
+    background:var(--jf-glass-bg)!important;
+    backdrop-filter:var(--jf-glass-blur)!important;
+    -webkit-backdrop-filter:var(--jf-glass-blur)!important;
+
+    border:var(--jf-glass-border)!important;
+    box-shadow:var(--jf-glass-shadow);
+
+    overflow:hidden!important;
+}
+
+/* État ouvert : marge symétrique */
+.mainDrawer.drawer-open{
+    margin-left:12px!important;
+}
+
+/* Fond transparent derrière le contenu scrollable du drawer */
+.mainDrawer-scrollContainer{
+    background:transparent!important;
+}
+
+/* Icônes du menu : légère transparence, pleine opacité au survol */
+.mainDrawer .navMenuOptionIcon{
+    opacity:.8;
+    transition:opacity .2s ease;
+}
+
+.mainDrawer .navMenuOption:hover .navMenuOptionIcon{
+    opacity:1;
+}
+
+/* Item sélectionné */
+.mainDrawer .navMenuOption-selected{
+    background:rgba(255,255,255,.08)!important;
+    border-radius:12px!important;
+}
+
+/* Item survolé */
+.mainDrawer .navMenuOption:hover{
+    background:rgba(255,255,255,.05)!important;
+    border-radius:12px!important;
+}
+
+/* --- Barre de lecture flottante (OSD vidéo) --- */
+.videoOsdBottom{
+    left:20px!important;
+    right:20px!important;
+    bottom:20px!important;
+    width:auto!important;
+
+    border-radius:var(--jf-radius-glass)!important;
+
+    background:var(--jf-glass-bg)!important;
+    backdrop-filter:var(--jf-glass-blur-strong)!important;
+    -webkit-backdrop-filter:var(--jf-glass-blur-strong)!important;
+
+    border:var(--jf-glass-border)!important;
+
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    padding:12px 16px!important;
+}
+
+/* --- Menus contextuels / dialogs / formulaires --- */
+.menuContainer,
+.paper-list,
+.dialog,
+.formDialog{
+    background:var(--jf-glass-bg)!important;
+
+    backdrop-filter:var(--jf-glass-blur)!important;
+    -webkit-backdrop-filter:var(--jf-glass-blur)!important;
+
+    border-radius:var(--jf-radius-glass)!important;
+    border:var(--jf-glass-border)!important;
+    box-shadow:var(--jf-glass-shadow)!important;
+
+    overflow:hidden!important;
+}
+
+/* Supprime les anciens fonds Jellyfin imbriqués dans ces conteneurs */
+.menuContainer .paper-list,
+.dialog-content,
+.formDialog-content{
+    background:transparent!important;
+}
+
+/* Items de liste dans les menus */
+.menuContainer .listItem,
+.paper-list .listItem{
+    border-radius:12px!important;
+    margin:4px 8px!important;
+
+    transition:
+        background .2s ease,
+        transform .15s ease!important;
+}
+
+.menuContainer .listItem:hover,
+.paper-list .listItem:hover{
+    background:rgba(255,255,255,.07)!important;
+}
+
+.menuContainer .listItem.selected,
+.paper-list .listItem.selected{
+    background:rgba(255,255,255,.10)!important;
+}
+
+/* Icônes des items de menu */
+.menuContainer .material-icons,
+.paper-list .material-icons{
+    opacity:.85;
+    transition:opacity .2s ease, transform .2s ease;
+}
+
+.menuContainer .listItem:hover .material-icons,
+.paper-list .listItem:hover .material-icons{
+    opacity:1;
+    transform:scale(1.08);
+}
+
+/* Animation d'apparition des menus */
+.menuContainer{
+    animation:jelly-menu-in .18s ease-out;
+}
+
+@keyframes jelly-menu-in{
+    from{
+        opacity:0;
+        transform:translateY(-6px) scale(.96);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* --- Bouton "Passer l'intro" (natif Jellyfin) --- */
+.skipIntroButton,
+button.skipIntroButton,
+.introSkipButton{
+    background:var(--jf-glass-bg)!important;
+
+    backdrop-filter:var(--jf-glass-blur)!important;
+    -webkit-backdrop-filter:var(--jf-glass-blur)!important;
+
+    border:var(--jf-glass-border)!important;
+    border-radius:var(--jf-radius-glass)!important;
+
+    color:rgba(255,255,255,.95)!important;
+
+    box-shadow:var(--jf-glass-shadow)!important;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        box-shadow .2s ease!important;
+}
+
+/* --- Bouton "Passer l'intro" du plugin Intro Skipper ---
+   Les couleurs viennent des variables --skip-btn-* définies dans :root
+   (consommées automatiquement par skip-button.min.css importé en haut). */
+.skip-button{
+    backdrop-filter:var(--jf-glass-blur)!important;
+    -webkit-backdrop-filter:var(--jf-glass-blur)!important;
+
+    border-radius:12px!important;
+    border:var(--jf-glass-border)!important;
+    box-shadow:var(--jf-glass-shadow)!important;
+
+    transition:
+        transform .2s ease,
+        background-color .2s ease,
+        box-shadow .2s ease!important;
+}
+
+.skip-button:hover{
+    background-color:rgba(255,255,255,.10)!important;
+    transform:translateY(-1px) scale(1.04);
+    color:white!important;
+
+    box-shadow:
+        0 12px 36px rgba(0,0,0,.45),
+        0 0 20px rgba(255,255,255,.08),
+        inset 0 1px 0 rgba(255,255,255,.1)!important;
+}
+
+.skip-button:active{
+    transform:scale(.97);
+}
+
+/* ============================================================================
+   ÉTATS "AIMÉ" / "VU" — icônes animées (bump + glow)
+   ============================================================================ */
+
+/* Cœur "favori" rempli : rose + petit bump + halo pulsant */
+button[is="emby-ratingbutton"][data-isfavorite="true"] .favorite{
+    color:#ff3b81!important;
+    animation:
+        jelly-heart-bump .3s ease-out,
+        jelly-heart-glow 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes jelly-heart-bump{
+    0%{ transform:scale(1); }
+    40%{ transform:scale(1.18); }
+    100%{ transform:scale(1); }
+}
+
+@keyframes jelly-heart-glow{
+    from{ filter:drop-shadow(0 0 4px rgba(255,59,129,.5)); }
+    to{ filter:drop-shadow(0 0 12px rgba(255,59,129,.9)); }
+}
+
+/* Coche "vu" : vert + petit bump + halo pulsant */
+button[is="emby-playstatebutton"][data-played="true"] .check{
+    color:#4ade80!important;
+    animation:
+        jelly-check-bump .3s ease-out,
+        jelly-check-glow 1.4s ease-in-out infinite alternate!important;
+}
+
+@keyframes jelly-check-bump{
+    0%{ transform:scale(1); }
+    40%{ transform:scale(1.18); }
+    100%{ transform:scale(1); }
+}
+
+@keyframes jelly-check-glow{
+    from{
+        filter:drop-shadow(0 0 4px rgba(74,222,128,.6));
+        text-shadow:0 0 4px rgba(74,222,128,.6);
+    }
+    to{
+        filter:drop-shadow(0 0 14px rgba(74,222,128,1));
+        text-shadow:0 0 14px rgba(74,222,128,.9);
+    }
+}
