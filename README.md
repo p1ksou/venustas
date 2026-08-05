@@ -1,0 +1,2 @@
+# jellypsy
+A Jellyfin theme !
