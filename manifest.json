@@ -1,0 +1,8 @@
+{
+  "name": "JellyPsy",
+  "author": "PicsouUniria",
+  "description": "Thème personnalisé Jellyfin",
+  "version": "1.0.0",
+  "css": "https://cdn.jsdelivr.net/gh/PicsouUniria/jellypsy/theme.css",
+  "preview": "https://cdn.jsdelivr.net/gh/PicsouUniria/jellypsy/preview.png"
+}
