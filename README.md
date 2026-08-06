@@ -1,6 +1,6 @@
 # Venustas
 
-A modern and elegant theme for Jellyfin.
+✨ A modern and elegant theme for Jellyfin.
 
 ## 📚 Table of Contents
 
@@ -19,8 +19,8 @@ Follow these steps to install the Venustas theme on Jellyfin:
    @import url("https://cdn.jsdelivr.net/gh/p1ksou/venustas/theme.css");
 ```
 in your Custom CSS.
-8. 💾 Click **Save**.
-9. 🔄 Refresh your Jellyfin page to apply the theme and your done !
+4. 💾 Click **Save**.
+5. 🔄 Refresh your Jellyfin page to apply the theme and your done !
 
 ## 🖼️ Preview
 
