@@ -11,7 +11,7 @@
 
 ## 📥 Installation
 
-Follow these steps to install the Venustas theme on Jellyfin:
+Follow these steps to install the Venustas theme on Jellyfin :
 
 1. ⚙️ Open your Jellyfin dashboard.
 2. 🎨 Go to **Dashboard → General → Custom CSS**.
