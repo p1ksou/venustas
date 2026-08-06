@@ -29,8 +29,8 @@ Follow these steps to install the Venustas theme on Jellyfin:
 
 This project is licensed under the **MIT License**. Which means that you basically can do anything you want with it ! Here's what you can, cannot and must do :
 
-1. You can fork it and redistribute it.
-2. You can use it for any commercial purposes.
-3. You're totally free to keep the modifications you've made for yourself.
-4. You must keep the copyright.
+1. 🔱 You can fork it and redistribute it.
+2. 💵 You can use it for any commercial purposes.
+3. 🕊️ You're totally free to keep the modifications you've made for yourself.
+4. 👨‍🎨 You must keep the copyright.
 
