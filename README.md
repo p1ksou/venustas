@@ -1,6 +1,6 @@
 # Venustas
 
-✨ A modern and elegant theme for Jellyfin.
+✨ A modern and elegant theme for Jellyfin !
 
 ## 📚 Table of Contents
 
