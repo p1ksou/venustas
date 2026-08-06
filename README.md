@@ -28,7 +28,7 @@ Follow these steps to install the Venustas theme on Jellyfin :
 
 ## 💡 Recommandations
 
-[> ✨ Coming soon.](https://github.com/IAmParadox27/jellyfin-plugin-media-bar)
+[jellyfin-plugin-media-bar](https://github.com/IAmParadox27/jellyfin-plugin-media-bar)
 
 ## 📜 License
 
