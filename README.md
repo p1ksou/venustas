@@ -29,7 +29,7 @@ Follow these steps to install the Venustas theme on Jellyfin :
 ## 💡 Recommandations
 
 - If you want the exact same style as on the previews with the scrolling media bar on top, install the [Media Bar](https://github.com/IAmParadox27/jellyfin-plugin-media-bar) plugin ! It's very easy to setup and adds a lot to the overall look !
-- Another cool plugin is [Jellyfin Enhanced](https://github.com/n00bcodr/Jellyfin-Enhanced) ; it adds keyboard shortcuts, subtitle styling, TMDB reviews, Jellyseerr search and request integration, and other improvements to Jellyfin !
+- Another cool plugin is [Jellyfin Enhanced](https://github.com/n00bcodr/Jellyfin-Enhanced) ! It adds keyboard shortcuts, subtitle styling, TMDB reviews, Jellyseerr search and request integration, and other improvements to Jellyfin !
 
 ## 📜 License
 
