@@ -5,7 +5,8 @@
 ## 📚 Table of Contents
 
 - [📥 Installation](#-installation)
-- [🖼️ Preview](#️-preview)
+- [🖼️ Preview](#-preview)
+- [💡 Reccommandations](#-reccommandations)
 - [📜 License](#-license)
 
 ## 📥 Installation
@@ -24,6 +25,10 @@ Follow these steps to install the Venustas theme on Jellyfin:
 ## 🖼️ Preview
 
 > ✨ Screenshots coming soon.
+
+## 💡 Reccommandations
+
+> ✨ Coming soon.
 
 ## 📜 License
 
