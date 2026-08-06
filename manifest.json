@@ -1,8 +1,8 @@
 {
-  "name": "JellyPsy",
+  "name": "Venustas",
   "author": "Picsou",
-  "description": "Jellyfin theme",
+  "description": "A modern and elegant theme for Jellyfin !",
   "version": "1.0.0",
-  "css": "https://cdn.jsdelivr.net/gh/PicsouUniria/jellypsy/theme.css",
-  "preview": "https://cdn.jsdelivr.net/gh/PicsouUniria/jellypsy/preview.png"
+  "css": "https://cdn.jsdelivr.net/gh/p1ksou/venustas/theme.css",
+  "preview": "https://cdn.jsdelivr.net/gh/p1ksou/venustas/preview.png"
 }
