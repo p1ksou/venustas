@@ -57,6 +57,10 @@
 .cardImageContainer,
 .cardImage,
 .cardOverlayContainer,
+.listItem,
+.listItem-content,
+.listItemImage,
+.listItemImage-large,
 .cardImageContainer::before,
 .cardImageContainer::after,
 button.raised,
@@ -76,7 +80,11 @@ button.raised,
 .cardScalable,
 .cardImageContainer,
 .cardImage,
-.cardOverlayContainer{
+.cardOverlayContainer,
+.listItem,
+.listItem-content,
+.listItemImage,
+.listItemImage-large{
     overflow:hidden!important;
 }
 
